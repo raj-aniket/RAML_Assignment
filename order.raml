@@ -1,0 +1,40 @@
+#%RAML 1.0 DataType
+type: object
+properties:
+      OrderID:
+        example: OID1
+        type: string
+      ProductID:
+        example: PID1
+        type: string
+      ProductName:
+        example: Prod1
+        type: string
+      CustomerID:
+        example: CID1
+        type: string
+      OrderDate:
+        example: 2020-12-24T05:30:00
+        type: datetime-only
+      Quantity:
+        example: 1
+        type: integer
+      ShipDate:
+        example: 2020-12-24T05:36:23
+        type: datetime-only
+      TotalPrice:
+        example: 12345.00
+        type: number
+      PaymentDate:
+        example: 2020-12-24T05:37:54
+        type: datetime-only
+      PaymentStatus:
+        enum:
+          - Success
+          - Failed
+          - Processing
+        example: Success
+        type: string
+      ShippingAddress:
+        example: 123 High Street, New York, USA
+        type: string 

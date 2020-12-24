@@ -1,0 +1,76 @@
+#%RAML 1.0
+types:
+  order: !include /data-types/order.raml
+  product: !include /data-types/Product.raml
+securitySchemes:
+  secured: !include /ss.raml
+traits:
+  error_response: !include /error.raml
+securedBy:
+  [secured]
+
+title: ecom API
+mediaType:
+  - application/json
+/orders:
+  is:
+    [error_response]
+  get:
+    responses:
+      200:
+        body:
+          application/json:
+            type: order[]
+            examples:
+              !include /examples/orderexample.raml
+
+  post:
+    body:
+      application/json:
+        examples:
+          !include /examples/PostOrder.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {message: Success, code: 201}
+
+  /{OrderId}:
+    patch:
+      body:
+        application/json:
+          examples:
+            !include /examples/PostOrder.raml
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {message: Updated, code: 200}
+
+    delete:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                {message: Deleted, code: 204}
+
+/products:
+    
+  /{ProductID}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              type: product
+              examples:
+                !include /examples/Priceexample.raml
+                
+      
+
+          
+            
+      
